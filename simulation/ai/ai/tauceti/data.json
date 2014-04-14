@@ -1,0 +1,7 @@
+{
+  "name": "TauCeti",
+  "description": "A hybrid decentralised AI that learns by experience, aiming at perfection with time.",
+  "moduleName" : "TAUCETI",
+  "constructor": "TauCeti",
+  "useShared": true
+}

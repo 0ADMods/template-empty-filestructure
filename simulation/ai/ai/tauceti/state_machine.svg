@@ -1,0 +1,70 @@
+CTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="245.5" cy="36.5" rx="30" ry="30"/>
+	<text x="207.5" y="42.5" font-family="Times New Roman" font-size="20">init/idle</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="428.5" cy="233.5" rx="30" ry="30"/>
+	<text x="364.5" y="239.5" font-family="Times New Roman" font-size="20">independent</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="428.5" cy="431.5" rx="30" ry="30"/>
+	<text x="383.5" y="437.5" font-family="Times New Roman" font-size="20">rebellion</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="203.5" cy="558.5" rx="30" ry="30"/>
+	<text x="160.5" y="564.5" font-family="Times New Roman" font-size="20">subdued</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="725.5" cy="558.5" rx="30" ry="30"/>
+	<text x="675.5" y="564.5" font-family="Times New Roman" font-size="20">destroyed</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="725.5" cy="558.5" rx="24" ry="24"/>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="428.5" cy="46.5" rx="30" ry="30"/>
+	<text x="381.5" y="52.5" font-family="Times New Roman" font-size="20">subduing</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="109.5" cy="337.5" rx="30" ry="30"/>
+	<text x="75.5" y="343.5" font-family="Times New Roman" font-size="20">fleeing</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="171.5" cy="197.5" rx="30" ry="30"/>
+	<text x="141.5" y="203.5" font-family="Times New Roman" font-size="20">fortify</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 448.625,68.649 A 123.48,123.48 0 0 1 448.625,211.351"/>
+	<polygon fill="black" stroke-width="1" points="448.625,68.649 449.167,78.067 457.328,72.289"/>
+	<text x="476.5" y="145.5" font-family="Times New Roman" font-size="20">won over</text>
+	<polygon stroke="black" stroke-width="1" points="399.978,242.799 138.022,328.201"/>
+	<polygon fill="black" stroke-width="1" points="138.022,328.201 147.178,330.475 144.079,320.968"/>
+	<text x="119.5" y="273.5" font-family="Times New Roman" font-size="20">almost doomed</text>
+	<polygon stroke="black" stroke-width="1" points="411.424,258.166 220.576,533.834"/>
+	<polygon fill="black" stroke-width="1" points="220.576,533.834 229.241,530.103 221.019,524.411"/>
+	<text x="139.5" y="388.5" font-family="Times New Roman" font-size="20">lost/surrendered</text>
+	<polygon stroke="black" stroke-width="1" points="265.918,58.48 408.082,211.52"/>
+	<polygon fill="black" stroke-width="1" points="408.082,211.52 406.301,202.256 398.974,209.062"/>
+	<text x="138.5" y="155.5" font-family="Times New Roman" font-size="20">take initial position</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 122.725,364.297 A 22.5,22.5 0 1 1 96.275,364.297"/>
+	<text x="2.5" y="426.5" font-family="Times New Roman" font-size="20">no space or no safety</text>
+	<polygon fill="black" stroke-width="1" points="96.275,364.297 87.527,367.83 95.618,373.708"/>
+	<polygon stroke="black" stroke-width="1" points="428.5,401.5 428.5,263.5"/>
+	<polygon fill="black" stroke-width="1" points="428.5,263.5 423.5,271.5 433.5,271.5"/>
+	<text x="433.5" y="338.5" font-family="Times New Roman" font-size="20">victory/chase away foreign governor/forces</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 457.247,422.99 A 235.535,235.535 0 0 1 711.794,531.837"/>
+	<polygon fill="black" stroke-width="1" points="711.794,531.837 711.983,522.405 703.398,527.534"/>
+	<text x="605.5" y="426.5" font-family="Times New Roman" font-size="20">no merci</text>
+	<polygon stroke="black" stroke-width="1" points="233.5,558.5 695.5,558.5"/>
+	<polygon fill="black" stroke-width="1" points="695.5,558.5 687.5,553.5 687.5,563.5"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 451.852,214.703 A 220.136,220.136 0 0 1 746.319,536.932"/>
+	<polygon fill="black" stroke-width="1" points="746.319,536.932 755.295,534.03 747.644,527.591"/>
+	<text x="745.5" y="238.5" font-family="Times New Roman" font-size="20">doom</text>
+	<polygon stroke="black" stroke-width="1" points="402.374,446.246 229.626,543.754"/>
+	<polygon fill="black" stroke-width="1" points="229.626,543.754 239.05,544.175 234.135,535.467"/>
+	<text x="253.5" y="485.5" font-family="Times New Roman" font-size="20">merci</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 406.694,452.097 A 476.568,476.568 0 0 1 232.402,550.475"/>
+	<polygon fill="black" stroke-width="1" points="406.694,452.097 397.391,453.663 404.026,461.145"/>
+	<text x="329.5" y="531.5" font-family="Times New Roman" font-size="20">upset/unhappy/upspring</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 111.813,307.621 A 187.984,187.984 0 0 1 150.929,219.293"/>
+	<polygon fill="black" stroke-width="1" points="150.929,219.293 142.021,222.399 149.817,228.661"/>
+	<text x="-19.5" y="257.5" font-family="Times New Roman" font-size="20">found ground</text>
+	<polygon stroke="black" stroke-width="1" points="201.21,201.662 398.79,229.338"/>
+	<polygon fill="black" stroke-width="1" points="398.79,229.338 391.561,223.277 390.174,233.18"/>
+	<text x="172.5" y="245.5" font-family="Times New Roman" font-size="20">survived the chase</text>
+	<polygon stroke="black" stroke-width="1" points="72.5,36.5 215.5,36.5"/>
+	<text x="19.5" y="42.5" font-family="Times New Roman" font-size="20">start</text>
+	<polygon fill="black" stroke-width="1" points="215.5,36.5 207.5,31.5 207.5,41.5"/>
+	<polygon stroke="black" stroke-width="1" points="428.5,76.5 428.5,203.5"/>
+	<polygon fill="black" stroke-width="1" points="428.5,203.5 433.5,195.5 423.5,195.5"/>
+	<text x="333.5" y="146.5" font-family="Times New Roman" font-size="20">rebellion</text>
+	<path stroke="black" stroke-width="1" fill="none" d="M 458.383,233.655 A 22.5,22.5 0 1 1 446.554,257.313"/>
+	<text x="495.5" y="280.5" font-family="Times New Roman" font-size="20">settle</text>
+	<polygon fill="black" stroke-width="1" points="446.554,257.313 445.802,266.717 454.677,262.11"/>
+</svg>
+
+

@@ -1,0 +1,8 @@
+{
+  "name": "Tutorial AI",
+  "description": "Tutorial AI",
+  "constructor": "TutorialAI",
+  "moduleName" : "TutorialAI",
+  "hidden": true,
+  "useShared": true
+}

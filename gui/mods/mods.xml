@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<objects>
+	<script file="gui/common/functions_global_object.js"/>
+	<script file="gui/common/functions_utility.js"/>
+	<script file="gui/common/timer.js"/>
+	<script file="gui/common/music.js"/>
+
+	<script file="gui/mods/mods.js"/>
+	<object type="image" style="ModernWindow" size="0 0 100% 100%" name="modsWindow">
+
+		<object style="TitleText" type="text" size="50%-128 0%+4 50%+128 36">
+			Modifications
+		</object>
+
+		<action on="Tick">
+			onTick();
+		</action>
+
+		<!-- Left panel: Mod list. -->
+		<object name="leftPanel" size="20 30 20% 100%-50">
+			<object name="playersBox" style="ModernList" type="olist" size="0 0 100% 100%" font="serif-bold-stroke-13">
+				<def id="status" heading="" width="7%"/>
+				<def id="name" heading="Mod" width="50%"/>
+				<def id="rating" heading="Rating" width="43%"/>
+			</object>
+		</object>
+
+		<object name="leftButtonPanel" size="20 100%-45 20% 100%-20">
+			<object type="button" style="StoneButton" size="0 0 100% 100%">
+				Popular mods
+				<action on="Press">Engine.GetGUIObjectByName("leaderboard").hidden = false;Engine.GetGUIObjectByName("leaderboardFade").hidden = false;</action>
+			</object>
+		</object>
+
+
+		<!-- Right panel: Mod details. -->
+		<object name="rightPanel" size="100%-250 30 100%-20 100%-20" >
+			<object name="gameInfoEmpty" size="0 0 100% 100%-60" type="image" sprite="ModernDarkBoxGold" hidden="false">
+				<object name="logo" size="50%-110 40 50%+110 140" type="image" sprite="productLogo"/>
+				<object name="subjectBox" type="image" sprite="ModernDarkBoxWhite" size="3% 180 97% 99%">
+					<object name="subject" size="5 5 100%-5 100%-5" type="text" style="ModernText" text_align="center"/>
+				</object>
+			</object>
+			<object name="gameInfo" size="0 0 100% 100%-90" type="image" sprite="ModernDarkBoxGold" hidden="true">
+
+				<!-- Mod Name -->
+				<object name="sgMapName" size="0 5 100% 20" type="text" style="ModernLabelText"/>
+
+				<!-- Map Preview -->
+				<object name="sgMapPreview" size="5 25 100%-5 235"  type="image" sprite=""/>
+
+				<object size="5 239 100%-5 240" type="image" sprite="ModernWhiteLine" z="25"/>
+
+				<!-- Map Type -->
+				<object size="5 240 50% 265" type="image" sprite="ModernItemBackShadeLeft">
+					<object size="0 0 100%-10 100%" type="text" style="ModernLabelText" text_align="right">Map Type:</object>
+				</object>
+				<object size="50% 240 100%-5 265" type="image" sprite="ModernItemBackShadeRight">
+					<object name="sgMapType" size="0 0 100% 100%" type="text" style="ModernLabelText" text_align="left"/>
+				</object>
+
+				<object size="5 264 100%-5 265" type="image" sprite="ModernWhiteLine" z="25"/>
+
+				<!-- Map Size -->
+				<object size="5 265 50% 290" type="image" sprite="ModernItemBackShadeLeft">
+					<object size="0 0 100%-10 100%" type="text" style="ModernLabelText" text_align="right">Map Size:</object>
+				</object>
+				<object size="50% 265 100%-5 290" type="image" sprite="ModernItemBackShadeRight">
+					<object name="sgMapSize" size="0 0 100% 100%" type="text" style="ModernLabelText" text_align="left"/>
+				</object>
+
+				<object size="5 289 100%-5 290" type="image" sprite="ModernWhiteLine" z="25"/>
+
+				<!-- Map Description -->
+				<object type="image" sprite="ModernDarkBoxWhite" size="3% 295 97% 75%">
+					<object name="sgModDescription" size="0 0 100% 100%" type="text" style="ModDescription"/>
+				</object>
+
+				<object type="image" sprite="ModernDarkBoxWhite" size="3% 76% 97% 99%">
+					<!-- Number of Players -->
+					<object size="32% 3% 57% 12%" type="text" style="ModernLabelText" text_align="left">Players:</object>
+					<object name="sgNbPlayers" size="52% 3% 62% 12%" type="text" style="ModernLabelText" text_align="left"/>
+
+					<!-- Creator Names -->
+					<object name="sgPlayersNames" size="0 15% 100% 100%" type="text" style="ModCreatorsList"/>
+				</object>
+			</object>
+			<object name="joinGameButton" type="button" style="StoneButton" size="0 100%-85 100% 100%-60" hidden="true">
+				Join Game
+				<action on="Press">
+					joinSelectedGame();
+				</action>
+			</object>
+			<object name="hostButton" type="button" style="StoneButton" size="0 100%-55 100% 100%-30">
+				Save changes
+				<action on="Press">
+					hostGame();
+				</action>
+			</object>
+
+			<object type="button" style="StoneButton" size="0 100%-25 100% 100%">
+				Main Menu
+				<action on="Press">
+					modsStop();
+					Engine.SwitchGuiPage("page_pregame.xml");
+				</action>
+			</object>
+		</object>
+
+
+
+		<!-- Middle panel: Mod Details (if only last part of URLs are shown then it could go to the right), Filters, Mod list. -->
+		<object name="middlePanel" size="20%+5 5% 100%-255 97.2%">
+
+			<object name="modInfoPanel" size="0 25 100% 20%-25" type="image" sprite="ModernDarkBoxGold">
+
+				<object name="modInfoText" size="0 0 100% 94%" type="text" style="ModPanel" font="serif-13"/>
+			</object>
+
+<!-- We iterate in the outer loop either over mod-pack it belongs to OR categories/types. Best in a dynamic way. Then the inner loop the corresponding single mods. -->
+			<object name="gamesBox" style="ModernList" type="olist" size="0 20% 100% 94%">
+				<action on="SelectionChange">updateGameSelection();</action>
+				<def id="name" heading="Preview" color="0 60 0" width="20%"/>
+				<!--<def id="ip" heading="IP" color="0 128 128" width="170"/>-->
+				<def id="mapName" heading="Mod Name" color="128 128 128" width="25%"/>
+				<def id="mapSize" heading="Mod URL" color="128 128 128" width="25%"/>
+				<def id="mapType" heading="Mod Type" color="0 128 128" width="20%"/>
+				<def id="modShowDetails" heading="Details" color="0 128 128" width="10%"/>
+				<!-- Details triggers no download, opposite to activation, alternatively we could show the mod details on hover event -->
+			</object>
+
+			<object name="filterPanel" size="0 0 100% 100%">
+				<object name="modGenericFilter" type="input" 
+						style="ModernInput" font="serif-13" 
+						size="0 20%-24 45%-10 20%-1">
+					<action on="Press">applyFilters();</action>
+				</object>
+
+				
+				<!-- TODO: deactivate if ModType == map . -->
+				<object name="mapSizeFilter"
+					type="dropdown"
+					style="ModernDropDown"
+					size="45%-10 20%-25 68% 20%+0"
+					font="serif-bold-13">
+					<action on="SelectionChange">applyFilters();</action>
+				</object>
+
+				<object name="mapTypeFilter"
+					type="dropdown"
+					style="ModernDropDown"
+					size="70% 20%-25 88% 20%+0"
+					font="serif-bold-13">
+					<action on="SelectionChange">applyFilters();</action>
+				</object>
+
+				<object name="playersNumberFilter"
+					type="dropdown"
+					style="ModernDropDown"
+					size="90% 20%-25 100% 20%+0"
+					font="serif-bold-13">
+					<action on="SelectionChange">applyFilters();</action>
+				</object>
+
+				<object type="text" size="22 0 75% 100%" text_align="left" textcolor="white">
+				Show mods available for download.</object>
+				<object name="showLocalOnlyFilter"
+					type="checkbox"
+					checked="true"
+					style="ModernTickBox"
+					size="0 100%-50 20 100%-30"
+					font="serif-bold-13">
+					<action on="Press">applyFilters();</action>
+				</object>
+
+				<object type="text" size="22 100%-24 50% 100%" text_align="left" textcolor="white">
+				Show functionality mods.</object>
+				<object name="showFunctionalModsFilter"
+					type="checkbox"
+					checked="true"
+					style="ModernTickBox"
+					size="0 100%-25 20 100%"
+					font="serif-bold-13">
+					<action on="Press">applyFilters();</action>
+				</object>
+
+				<object type="text" size="22 100%-50 50% 100%" text_align="left" textcolor="white">
+				Show content mods. (campaigns, maps, units, ..) </object>
+				<object name="showContentModsFilter"
+					type="checkbox"
+					checked="true"
+					style="ModernTickBox"
+					size="0 0 20 20"
+					font="serif-bold-13">
+					<action on="Press">applyFilters();</action>
+				</object>
+
+				<object type="text" size="50%+22 0 100% 100%" text_align="left" textcolor="white">
+				Show experimental mods.</object>
+				<object name="showExperimentalModsFilter"
+					type="checkbox"
+					checked="true"
+					style="ModernTickBox"
+					size="50% 0 50%+20 20"
+					font="serif-bold-13">
+					<action on="Press">applyFilters();</action>
+				</object>
+
+				<object type="text" size="50%+22 100%-50 100% 100%-30" text_align="left" textcolor="white">
+				Show mod packs only.</object>
+				<object name="showModPacksOnlyFilter"
+					type="checkbox"
+					checked="true"
+					style="ModernTickBox"
+					size="50% 100%-50 50%+20 100%-30"
+					font="serif-bold-13">
+					<action on="Press">applyFilters();</action>
+				</object>
+			</object>
+
+		</object>
+
+
+
+		<!-- START Window for mod leaderboard stats -->
+		<!-- Add a translucent black background to fade out the menu page -->
+		<object hidden="true" name="leaderboardFade" type="image" z="100" sprite="ModernFade"/>
+		<object hidden="true" name="leaderboard" type="image" style="ModernDialog" size="50%-224 50%-160 50%+224 50%+160" z="101">
+			<object style="TitleText" type="text" size="50%-128 0%-16 50%+128 16">Popular mods</object>
+			<object name="leaderboardBox"
+				style="ModernList"
+				type="olist"
+				size="19 19 100%-19 100%-58">
+				<def id="rank" heading="Rank" color="255 255 255" width="15%"/>
+				<def id="rating" heading="Rating" color="255 255 255" width="20%"/>
+				<def id="name" heading="Name" color="255 255 255" width="65%"/>
+			</object>
+			<object type="button" style="StoneButton" size="50%+5 100%-45 50%+133 100%-17">
+				Back
+				<action on="Press">Engine.GetGUIObjectByName("leaderboard").hidden = true;Engine.GetGUIObjectByName("leaderboardFade").hidden = true;</action>
+			</object>
+			<object type="button" style="StoneButton" size="50%-133 100%-45 50%-5 100%-17">
+				Update
+				<action on="Press">Engine.SendGetBoardList();</action>
+			</object>
+		</object>
+		<!-- END Window for leaderboard stats -->
+	</object>
+</objects>

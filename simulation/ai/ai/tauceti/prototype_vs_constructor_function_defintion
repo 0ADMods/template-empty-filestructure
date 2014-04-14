@@ -1,0 +1,12 @@
+.PROTOTYPE. vs. WITHIN CONSTRUCTOR function definition:
+
+http://stackoverflow.com/questions/9772307/declaring-javascript-object-method-in-constructor-function-vs-in-prototype#answer-9772864
+
+"    If your methods do not use local variables defined in your constructor (your example doesn't), then use the prototype approach.
+    If you're creating lots of Dogs, use the prototype approach. This way, all "instances" (i.e. objects created by the Dog constructor) will share one set of functions, whereas the constructor way, a new set of functions is created every time the Dog constructor is called, using more memory.
+    If you're creating a small number of Dogs and find that using of local, "private" variables in your constructor improves your code, this may be the better approach. Use your judgment and do some benchmarks if performance or memory consumption are major concerns.
+"
+
+
+
+

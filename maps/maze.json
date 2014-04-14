@@ -1,0 +1,14 @@
+{
+	"settings" : {
+		"Name" : "Maze",
+		"Script" : "maze.js",
+		"Description" : "A nice map with a maze. Works good for up to 4 players, more players cause some imbalance. Tiny map is ridiculous, small map is still very easy.",
+		"BaseTerrain" : "tropic_beach_volcanic",
+		"BaseHeight" : 0,
+		"Keywords": [],
+		"CircularMap": false,
+		"XXXXXX" : "Optionally define other things here, like we would for a scenario",
+                "Credit" :  "Cuervo",
+                "url" : "http://www.wildfiregames.com/forum/index.php?showtopic=18222" 
+	}
+}

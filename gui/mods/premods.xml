@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<objects>
+	<script file="gui/mods/premods.js"/>
+	<script file="gui/common/functions_global_object.js"/>
+	<script file="gui/common/functions_utility.js"/>
+
+	<!-- Add a translucent black background to fade out the menu page -->
+	<object type="image" z="0" sprite="ModernFade"/>
+
+	<object name="dialog" type="image" style="ModernDialog" size="50%-190 50%-120 50%+190 50%+120">
+
+		<action on="Tick">
+			onTick();
+		</action>
+
+		<object name="pageConnecting" hidden="true">
+			<object name="connectionStatus" type="text" text_align="center" size="0 100 100% 120">
+				[Connection status]
+			</object>
+		</object>
+
+		<object style="TitleText" type="text" size="50%-128 0%-16 50%+128 16">
+			Modifications
+		</object>
+
+		<object name="pageConnect" size="0 32 100% 100%">
+			<object type="text" size="0 0 400 30" style="ModernLabelText" text_align="center">
+				Connect to the game mods
+			</object>
+			<object name="connectUsernameLabel" type="text" size="50 40 125 70" style="ModernLabelText" text_align="right">
+				Login:
+			</object>
+			<object name="connectUsername" type="input" size="135 40 100%-50 64" style="ModernInput">
+				<action on="Load">
+					this.caption = Engine.ConfigDB_GetValue("user", "mods.login");
+				</action>
+			</object>
+			<object name="connectPasswordLabel" type="text" size="50 80 125 110" style="ModernLabelText" text_align="right">
+				Password:
+			</object>
+			<object name="connectPassword" type="input" size="135 80 100%-50 104" style="ModernInput" mask="true" mask_char="*">
+				<action on="Load">
+					// We only show 10 characters to make it look decent.
+					this.caption = Engine.ConfigDB_GetValue("user", "mods.password").substring(0, 10);
+				</action>
+				<action on="Press">
+					modsStart();
+				</action>
+			</object>
+		</object>
+		<object name="pageRegister" size="0 32 100% 100%" hidden="true">
+			<object type="text" style="ModernLabelText" size="0 0 400 30" text_align="center">
+				Registration
+			</object>
+			<object type="text" size="50 40 170 70" style="ModernLabelText" text_align="right">
+				Password again:
+			</object>
+			<object name="registerPasswordAgain" type="input" size="180 40 100%-50 64" style="ModernInput" mask="true" mask_char="*">
+				<action on="Press">
+					modsStartRegister()
+				</action>
+			</object>
+		</object>
+		<object name="feedback" type="text" size="50 150 100%-50 190" style="ModernLabelText" textcolor="red" text_align="center"/>
+		<object type="button" size="18 100%-45 126 100%-17" style="StoneButton">
+			Cancel
+			<action on="Press">
+				if (Engine.GetGUIObjectByName("pageRegister").hidden)
+				{
+					modsStop();
+					Engine.PopGuiPage();
+				}
+				else
+					switchRegister();
+			</action>
+		</object>
+		<object name="register" type="button" size="136 100%-45 244 100%-17" style="StoneButton">
+			Register
+			<action on="Press">
+				if (Engine.GetGUIObjectByName("pageRegister").hidden)
+				{
+					switchRegister();
+				}
+				else
+					modsStartRegister()
+			</action>
+		</object>
+		<object name="connect" type="button" size="254 100%-45 100%-18 100%-17" style="StoneButton">
+			Connect
+			<action on="Press">
+				modsStart();
+			</action>
+		</object>
+
+	</object>
+
+</objects>
